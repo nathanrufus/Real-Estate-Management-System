@@ -1,6 +1,7 @@
 <?php include '../config/db_connect.php'; ?>
-<?php include '../includes/header.php'; ?>
-<?php include '../includes/navbar.php'; ?>
+<?php include
+session_start();
+'../includes/navbar.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
