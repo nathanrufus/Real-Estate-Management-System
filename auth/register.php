@@ -107,6 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <select name="role" required>
                 <option value="customer">Customer</option>
                 <option value="owner">Owner</option>
+                <option value="admin">Admin'</option>
             </select>
 
             <button type="submit">Register</button>

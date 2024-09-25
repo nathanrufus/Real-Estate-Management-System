@@ -17,9 +17,67 @@
         <?php if (isset($_SESSION['role'])) { 
             // Admin Links
             if ($_SESSION['role'] == 'admin') { ?>
-                <li style="margin: 0 15px;">
-                    <a href="/admin/dashboard.php" style="text-decoration: none; color: white; padding: 10px 15px; display: inline-block; border-radius: 5px;">Admin Dashboard</a>
-                </li>
+                <ul style="list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; position: relative;">
+                    <!-- Manage Properties Dropdown -->
+                    <li style="margin: 0 15px; position: relative;">
+                        <a href="#" id="manage-properties-link" style="text-decoration: none; color: white; padding: 10px 15px; display: inline-block; border-radius: 5px;">Manage Properties</a>
+                        <ul id="manage-properties-dropdown" style="list-style: none; margin: 0; padding: 10px 0; position: absolute; background-color: #444; top: 100%; left: 0; width: 200px; display: none; border-radius: 5px;">
+                        <!-- Dashboard -->
+                            <li><a href="/Real-Estate-Management-System/admin/dashboard.php" style="text-decoration: none; color: white; padding: 10px; display: block;">Dashboard</a></li>
+                            <li><a href="/Real-Estate-Management-System/admin/property_types.php" style="text-decoration: none; color: white; padding: 10px; display: block;">Property Types</a></li>
+                            <li><a href="/Real-Estate-Management-System/admin/country.php" style="text-decoration: none; color: white; padding: 10px; display: block;">Countries</a></li>
+                            <li><a href="/Real-Estate-Management-System/admin/states.php" style="text-decoration: none; color: white; padding: 10px; display: block;">States</a></li>
+                            <li><a href="/Real-Estate-Management-System/admin/cities.php" style="text-decoration: none; color: white; padding: 10px; display: block;">Cities</a></li>
+                            <li><a href="/Real-Estate-Management-System/customer/browse_properties.php" style="text-decoration: none; color: white; padding: 10px; display: block;">Listed Properties</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Manage Users, Reviews, Pages, and Others Dropdown -->
+                    <li style="margin: 0 15px; position: relative;">
+                        <a href="#" id="admin-link" style="text-decoration: none; color: white; padding: 10px 15px; display: inline-block; border-radius: 5px;">Manage Users & Others</a>
+                        <ul id="admin-dropdown" style="list-style: none; margin: 0; padding: 10px 0; position: absolute; background-color: #444; top: 100%; left: 0; width: 200px; display: none; border-radius: 5px;">
+                            <!-- Manage Users -->
+                            <li style="padding: 5px 10px; background-color: #555; color: white; font-weight: bold;">Manage Users</li>
+                            <li><a href="/Real-Estate-Management-System/admin/view_owners.php" style="text-decoration: none; color: white; padding: 10px; display: block;">Owners</a></li>
+                            <li><a href="/Real-Estate-Management-System/admin/view_agents.php" style="text-decoration: none; color: white; padding: 10px; display: block;">Agents</a></li>
+                            <li><a href="/Real-Estate-Management-System/admin/view_users.php" style="text-decoration: none; color: white; padding: 10px; display: block;">Users</a></li>
+
+                            <!-- Manage Reviews -->
+                            <li style="padding: 5px 10px; background-color: #555; color: white; font-weight: bold;">Manage Reviews</li>
+                            <li><a href="/Real-Estate-Management-System/admin/reviews.php" style="text-decoration: none; color: white; padding: 10px; display: block;">View Reviews</a></li>
+
+                            <!-- Manage Accounts -->
+                            <li style="padding: 5px 10px; background-color: #555; color: white; font-weight: bold;">Manage Account</li>
+                            <li><a href="/Real-Estate-Management-System/customer/change_password.php" style="text-decoration: none; color: white; padding: 10px; display: block;">Edit Profile</a></li>
+                            <li><a href="/Real-Estate-Management-System/customer/change_password.php" style="text-decoration: none; color: white; padding: 10px; display: block;">Change Password</a></li>
+                            <!-- Search Properties -->
+                            <li><a href="/Real-Estate-Management-System/admin/search_property.php" style="text-decoration: none; color: white; padding: 10px; display: block;">Search Property</a></li>
+                            <li><a href="/Real-Estate-Management-System/admin/pages.php" style="text-decoration: none; color: white; padding: 10px; display: block;">Manage Pages</a></li>
+                            <li><a href="/Real-Estate-Management-System/auth/logout.php" style="text-decoration: none; color: white; padding: 10px; display: block;">Logout</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            <!-- JavaScript for Dropdowns -->
+            <script>
+                const managePropertiesLink = document.getElementById('manage-properties-link');
+                const managePropertiesDropdown = document.getElementById('manage-properties-dropdown');
+                managePropertiesLink.addEventListener('mouseover', function() {
+                    managePropertiesDropdown.style.display = 'block';
+                });
+                managePropertiesDropdown.addEventListener('mouseleave', function() {
+                    managePropertiesDropdown.style.display = 'none';
+                });
+
+                const adminLink = document.getElementById('admin-link');
+                const adminDropdown = document.getElementById('admin-dropdown');
+                adminLink.addEventListener('mouseover', function() {
+                    adminDropdown.style.display = 'block';
+                });
+                adminDropdown.addEventListener('mouseleave', function() {
+                    adminDropdown.style.display = 'none';
+                });
+            </script>
 
             <!-- Owner Links -->
             <?php } elseif ($_SESSION['role'] == 'owner') { ?>
